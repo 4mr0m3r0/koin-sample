@@ -20,7 +20,7 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
             var childView: View? = null
 
             override fun describeTo(description: Description) {
-                var idDescription = Integer.toString(recyclerViewId)
+                var idDescription = recyclerViewId.toString()
                 if (this.resources != null) {
                     idDescription = try {
                         this.resources!!.getResourceName(recyclerViewId)
