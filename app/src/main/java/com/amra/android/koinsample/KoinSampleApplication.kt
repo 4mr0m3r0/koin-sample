@@ -1,7 +1,9 @@
 package com.amra.android.koinsample
 
 import android.app.Application
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 import timber.log.Timber
 
 class KoinSampleApplication: Application() {
@@ -11,7 +13,11 @@ class KoinSampleApplication: Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-        startKoin(this, listOf(applicationModule, browseModule), loadProperties = true, logger = KoinLogger())
+        startKoin {
+            androidLogger()
+            androidContext(this@KoinSampleApplication)
+            modules(listOf(applicationModule, browseModule))
+        }
     }
 
 }

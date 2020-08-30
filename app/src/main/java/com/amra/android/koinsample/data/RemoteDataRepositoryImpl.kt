@@ -4,7 +4,7 @@ import com.amra.android.koinsample.model.Currency
 
 class RemoteDataRepositoryImpl(): DataRepository {
 
-    override fun getCurrencies(jsonString: String): List<Currency> {
+    override fun getCurrencies(): List<Currency> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

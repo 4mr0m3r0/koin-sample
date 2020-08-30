@@ -8,8 +8,7 @@ import com.amra.android.koinsample.data.DataRepositoryFactory
 import com.amra.android.koinsample.model.Currency
 
 class CurrenciesViewModel constructor(
-    private val dataRepository: DataRepository,
-    private val jsonString: String): ViewModel() {
+    private val dataRepository: DataRepository): ViewModel() {
 
     private val currencyLiveData = MutableLiveData<List<Currency>>()
 
@@ -18,7 +17,7 @@ class CurrenciesViewModel constructor(
     }
 
     fun retrieveCurrencies() {
-        val data = dataRepository.getCurrencies(jsonString)
+        val data = dataRepository.getCurrencies()
         currencyLiveData.postValue(data)
     }
 
