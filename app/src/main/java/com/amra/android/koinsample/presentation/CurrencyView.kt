@@ -1,7 +1,6 @@
 package com.amra.android.koinsample.presentation
 
 import android.content.Context
-import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -9,8 +8,8 @@ import com.amra.android.koinsample.R
 import com.amra.android.koinsample.UrlHelper
 import com.amra.android.koinsample.model.Currency
 import kotlinx.android.synthetic.main.view_currency.view.*
-import org.koin.standalone.KoinComponent
-import org.koin.standalone.inject
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 class CurrencyView @JvmOverloads constructor(
     context: Context,

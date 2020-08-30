@@ -1,23 +1,21 @@
 package com.amra.android.koinsample
 
 import com.amra.android.koinsample.data.DataRepository
-import com.amra.android.koinsample.data.DataRepositoryFactory
 import com.amra.android.koinsample.data.LocalDataRepositoryImpl
-import com.amra.android.koinsample.data.RemoteDataRepositoryImpl
 import com.amra.android.koinsample.presentation.CurrenciesAdapter
 import com.amra.android.koinsample.presentation.CurrenciesViewModel
 import com.google.gson.Gson
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
 val applicationModule = module {
     single { Gson() }
-    single { UrlHelper(getProperty("currency_base_url")) }
+    single { UrlHelper("https://coinmarketcap.com/currencies/") }
 
-    factory<DataRepository> { LocalDataRepositoryImpl(get()) }
+    factory<DataRepository> { LocalDataRepositoryImpl(get(), get()) }
 }
 
-val browseModule = module("browse") {
+val browseModule = module {
     factory { CurrenciesAdapter() }
-    viewModel { (jsonString: String) -> CurrenciesViewModel(get(), jsonString) }
+    viewModel { CurrenciesViewModel(get()) }
 }

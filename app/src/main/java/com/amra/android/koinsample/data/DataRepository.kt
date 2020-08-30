@@ -4,6 +4,6 @@ import com.amra.android.koinsample.model.Currency
 
 interface DataRepository {
 
-    fun getCurrencies(jsonString: String): List<Currency>
+    fun getCurrencies(): List<Currency>
 
 }
