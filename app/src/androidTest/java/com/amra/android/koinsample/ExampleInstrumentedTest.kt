@@ -10,20 +10,14 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.amra.android.koinsample.data.DataRepository
 import com.amra.android.koinsample.model.Currency
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
-import org.koin.dsl.module.module
-import org.koin.standalone.StandAloneContext.loadKoinModules
-import org.koin.standalone.inject
+import org.junit.Test
+import org.junit.runner.RunWith
 import org.koin.test.KoinTest
-import org.koin.test.declareMock
+import org.koin.test.inject
+import org.koin.test.mock.declareMock
 
 
 @RunWith(AndroidJUnit4::class)
@@ -65,7 +59,7 @@ class ExampleInstrumentedTest : KoinTest {
     }
 
     private fun stubDataRepositoryGetCurrencies(currencies: List<Currency>) {
-        whenever(mockDataRepository.getCurrencies(any())).thenReturn(currencies)
+        whenever(mockDataRepository.getCurrencies()).thenReturn(currencies)
     }
 
 }
